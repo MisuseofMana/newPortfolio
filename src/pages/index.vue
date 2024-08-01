@@ -39,7 +39,7 @@
 
           <v-row>
             <v-col cols="12" md="4" v-for="project in projects" :key="project.id">
-              <v-card>
+              <v-card color="grey-lighten-5" elevation="5">
                 <v-img
                   color="surface-variant"
                   height="350"
@@ -79,34 +79,124 @@
             <p class="text-body-1 mb-3">I spent most of 20-Naught rounding my production skills across Full Stack Web Dev, UI/UX Design, Vue JS, Vuex, Illustration, Graphic Design, SEO, and Storytelling in order to produce quality content.</p>
             <p class="text-body-1 mb-10">Working with a team is my forte, I'm knowledgeable in mutiple fields and I use that knowledge to communicate to my clients/coworkers how we can facilitate a seamless experience for each other.</p>
             
-            <h3 class="text-h2 mb-3">History of a Level 31 Web Dev</h3>
-            <p class="text-h4 mb-5">Web Developer, Comics Artist, Storyteller</p>
+            <p class="text-h4 mb-5">Web Developer, Comics Artist, Cryptographer, Storyteller</p>
             <v-divider class="mb-5"/>
             <h4 class="text-h4 mb-3">Work History</h4>
             <v-card
               class="pa-5 mb-5"
               color="secondary-lighten-1"
             >
+              <h5 class="text-h4">Continu<strong>ed</strong></h5>
+              <p class="text-h5">Int. Front End Web Developer</p>
+              <p class="text-h6">December 2021 - Present</p>
+              <ul class="px-5 py-1 text-body-1">
+                <li>work on evolving Agile teams under a Scrum manager to deliver tri-weekly features</li>
+                <li>recreate legacy CMS to a modernized customizable Vue 3, Nuxt 3, & Vuetify 3 CMS</li>
+                <li>integrate third party services - Kaltura, Stamped.io, VWO, GTM, and more</li>
+                <li>build and maintain a customized library of Vuetify components leveraging aliasing and global configuration</li>
+                <li>maintain internal documentation using Vuepress</li>
+              </ul>
+            </v-card>
+
+            <v-card
+              class="pa-5 mb-8"
+              color="secondary-lighten-1"
+            >
               <h5 class="text-h4">Freelance Web Developer</h5>
               <p class="text-h5">Owner & Operator</p>
-              <p class="text-h6">Feb 2013 - Present</p>
+              <p class="text-h6">February 2013 - Present</p>
               <ul class="px-5 py-1 text-body-1">
                 <li>cooperate with individual and business branding through art, websites, and iconography.</li>
                 <li>work spans over 7 years, clientel ranges from college campus programs, to Youtube channels, Kickstarters, Twitch streamers, family owned businesses, individuals etc.</li>
               </ul>
             </v-card>
 
+            <h4 class="text-h4 mb-3">Skills</h4>
             <v-card
-              class="pa-5"
+              class="pa-5 mb-8"
               color="secondary-lighten-1"
             >
-              <h5 class="text-h4">Freelance Web Developer</h5>
-              <p class="text-h5">Owner & Operator</p>
-              <p class="text-h6">Feb 2013 - Present</p>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <h5 class="text-h5">Programming</h5>
+                  <ul class="px-5 py-1 text-body-1">
+                    <li>HTML, CSS, Javascript</li>
+                    <li>Vue 2 & 3</li>
+                    <li>Nuxt 2 & 3</li>
+                    <li>Vuetify 2 & 3</li>
+                    <li>Typescript</li>
+                    <li>Git</li>
+                    <li>NPM</li>
+                    <li>Google Firebase</li>
+                    <li>Vee Validate</li>
+                    <li>Cypress</li>
+                    <li>Jest</li>
+                    <li>Vitest</li>
+                    <li>Circle CI</li>
+                    <li>Sonarcloud</li>
+                    <li>React JS</li>
+                    <li>Apollo GQL</li>
+                  </ul>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <h5 class="text-h5 mb-2">OS & Programs</h5>
+                  <ul class="px-5 py-1 text-body-1">
+                    <li>Mac OS</li>
+                    <li>Windows OS</li>
+                    <li>Visual Studio Code</li>
+                    <li>Photoshop</li>
+                    <li>InDesign</li>
+                    <li>Blender</li>
+                    <li>Procreate</li>
+                    <li>Aseprite</li>
+                    <li>Godot</li>
+                  </ul>
+                </v-col>
+              </v-row>
+            </v-card>
+
+            <h4 class="text-h4 mb-3">Education</h4>
+
+            <v-card
+              class="pa-5 mb-5"
+              color="secondary-lighten-1"
+            >
+              <h5 class="text-h4">Austin Coding Academy</h5>
+              <p class="text-h5">Certified Full Stack Web Development</p>
+              <p class="text-h6">September 2019 - March 2020</p>
               <ul class="px-5 py-1 text-body-1">
-                <li>cooperate with individual and business branding through art, websites, and iconography.</li>
-                <li>work spans over 7 years, clientel ranges from college campus programs, to Youtube channels, Kickstarters, Twitch streamers, family owned businesses, individuals etc.</li>
+                <li>Completed a biweekly intensive course over 7 months, I receieved a full stack certification in 2020</li>
+                <li>covered HTML, CSS, Javascript, React.js, Github, Node.js, Unit Testing, SQL, and various APIs</li>
               </ul>
+            </v-card>
+
+            <v-card
+              class="pa-5 mb-8"
+              color="secondary-lighten-1"
+            >
+              <h5 class="text-h4">Media Arts & Science @ IUPUI</h5>
+              <p class="text-h5">Various Studies in Comupter Science</p>
+              <p class="text-h6">2011 - 2015, 2018</p>
+              <ul class="px-5 py-1 text-body-1">
+                <li>Studied subject matters from digital media to illustration to cartooning. Each of these focuses developed my creativity and problem solving skills</li>
+              </ul>
+            </v-card>
+
+            <h4 class="text-h4 mb-3">Accolades</h4>
+
+            <v-card
+              class="pa-5 mb-5"
+              color="secondary-lighten-1"
+            >
+              <h5 class="text-h4">Excellence Award</h5>
+              <p class="text-h6">July 2024</p>
+              <ul class="px-5 py-1 text-body-1">
+                <li>recieved an excellence award in Q3 within Continu<strong>ed</strong></li>
+              </ul>
+              <p class="text-body-1 ml-1 pl-2 border-s-xl">"Sean has gone above and beyond by pairing how he goes about his work with successfully leading, mentoring, and driving results on a number of important initiatives.
+                  He led research efforts and pioneered the implementation of tools (Vuetify Component Aliasing & VeeValidate Customization) that improved ease of maintenence for Athena Front End components,
+                  and facilitated key synchronization of tools with the UIUX team. He consistently champions documentation Fridays, and promotes an atmosphere of collaborative, continuous learning among the Athena
+                  development team. He focuses on mentoring and sharing knowledge. He handled our first late night/early morning Athena on-call incident like a pro!"</p>
             </v-card>
           </v-tabs-window-item>
       </v-tabs-window>
