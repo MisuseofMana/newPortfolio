@@ -7,23 +7,25 @@
       bg-color="white"
       class="mb-5"
     >
-      <v-tab value="home">Home</v-tab>
-      <v-tab value="projects">Projects</v-tab>
-      <v-tab value="about">About</v-tab>
+      <v-tab value="home">Projects</v-tab>
       <v-tab value="resume">Resume</v-tab>
     </v-tabs>
 
     <v-card-text>
       <v-tabs-window v-model="tab">
-        <v-tabs-window-item value="home" class="pb-2">
-          <h2 class="text-h2 mb-5">Home</h2>
+        <v-tabs-window-item value="home" class="pb-10">
           <p class="text-body-1 mb-3">
             Nice to meet you! I'm Sean Yager, a web developer, a comics illustrator, a 3D artist, a poet, a storyteller, but mostly I'm a well versed, certified technology nerd.
           </p>
+
+          <p class="text-body-1 mb-3">I'm Sean Yager, a.k.a Shinbone, a.k.a Misuse of Mana, By day I code, create, and maintain a smattering of websites. By night I summon up narratives writing about the realm of Amara, my storytelling setting for comics, TTRPG source material, games and more.</p>
+          <p class="text-body-1 mb-3">I grew up in the cornfields of Indiana swinging tree branch swords and imagining backyard adventures which evolved into an ever growing interest of all things internet and storytelling. I currently work as a web developer for continued.com working on their Vue site.</p>
+          <p class="text-body-1">If you're interested in finding out more about my projects, I'm all over the place on social media just look me up!</p>
+          
           <p class="text-body-1 mb-5">
             Stay a while and browse my myriad projects, or tap the navbar for more!
           </p>
-
+          <h2 class="text-h2 my-10">Projects</h2>
           <v-btn-toggle
           v-model="text"
           color="white"
@@ -32,18 +34,18 @@
           group
           class="mb-5"
         >
-          <v-btn v-for="button in contentTypes" :value="button.value" :key="button.value">
+          <v-btn v-for="button in contentTypes" :value="button.value" :key="button.value" @click="selectedSubTab = button.value">
             {{  button.text  }}
           </v-btn>
         </v-btn-toggle>
 
           <v-row>
-            <v-col cols="12" md="4" v-for="project in projects" :key="project.id">
-              <v-card color="grey-lighten-5" elevation="5">
+            <v-col cols="12" md="4" v-for="project in filteredProjects" :key="project.id">
+              <v-card color="grey-lighten-5" elevation="5" :href="project.link">
                 <v-img
                   color="surface-variant"
                   height="350"
-                  :src="`/projectImages/${ project.imageLink}.jpg`"
+                  :src="`/projectImages/${project.imageLink}.jpg`"
                   cover
                 />
                 <v-card-title>
@@ -59,18 +61,6 @@
               </v-card>
             </v-col>
           </v-row>
-        </v-tabs-window-item>
-
-        <v-tabs-window-item value="projects">
-          <h2 class="text-h2 mb-5">Projects</h2>
-          <p class="text-body-1">I'm always up to something, take a gander at my library of projects over the years.</p>
-        </v-tabs-window-item>
-        
-        <v-tabs-window-item value="about">
-          <h2 class="text-h2 mb-5">About</h2>
-          <p class="text-body-1 mb-3">I'm Sean Yager, a.k.a Shinbone, a.k.a Misuse of Mana, By day I code, create, and maintain a smattering of websites. By night I summon up narratives writing about the realm of Amara, my storytelling setting for comics, TTRPG source material, games and more.</p>
-          <p class="text-body-1 mb-3">I grew up in the cornfields of Indiana swinging tree branch swords and imagining backyard adventures which evolved into an ever growing interest of all things internet and storytelling. I currently work as a web developer for continued.com working on their Vue site.</p>
-          <p class="text-body-1">If you're interested in finding out more about my projects, I'm all over the place on social media just look me up!</p>
         </v-tabs-window-item>
 
         <v-tabs-window-item value="resume">
@@ -205,31 +195,42 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import { nanoid } from 'nanoid'
   const tab = ref(null)
+  const selectedSubTab = ref('all')
   const text = ref('all')
   const contentTypes = ref([  
     { text: 'All', value: 'all' },
     { text: 'Web Dev', value: 'web-dev' },
     { text: 'Comics', value: 'comics' },
     { text: 'Books', value: 'books' },
+    { text: 'Photography', value: 'photography' },
     { text: 'Podcasts', value: 'podcasts' },
   ])
   const projects = ref([
-    { id: nanoid(), title: 'Ire', type: 'comics', text: 'Description text here.', imageLink: 'ireSplash' },
-    { id: nanoid(), title: 'Misuse of Mana', type: 'comics', text: 'Description text here.', imageLink: 'mofmSplash' },
-    { id: nanoid(), title: 'Wishmaker', type: 'comics', text: 'Description text here.', imageLink: 'wishmakerSplash' },
-    { id: nanoid(), title: 'Psychic Psychic Cowboy', type: 'comics', text: 'Description text here.', imageLink: 'ppcSplash' },
-    { id: nanoid(), title: 'Dungeons of Amara', type: 'books', text: 'Description text here.', imageLink: 'doaSplash' },
-    { id: nanoid(), title: 'Fate & Forage', type: 'books', text: 'Description text here.', imageLink: 'tbaSplash' },
-    { id: nanoid(), title: 'Raconteur', type: 'books', text: 'Description text here.', imageLink: 'tbaSplash' },
-    { id: nanoid(), title: 'My Github', type: 'web-dev', text: 'Description text here.', imageLink: 'gitSplash' },
-    { id: nanoid(), title: 'Crickburrow Project', type: 'web-dev', text: 'Description text here.', imageLink: 'rccSplash' },
-    { id: nanoid(), title: 'Moebius Dungeons', type: 'web-dev', text: 'Description text here.', imageLink: 'modunSplash' },
-    { id: nanoid(), title: 'The Strategies', type: 'web-dev', text: 'Description text here.', imageLink: 'strategiesSplash' },
-    { id: nanoid(), title: 'Character Generator', type: 'web-dev', text: 'Description text here.', imageLink: 'tbaSplash' },
-    { id: nanoid(), title: 'Welcome to Amara', type: 'podcasts', text: 'Description text here.', imageLink: 'wtaSplash' },
-    { id: nanoid(), title: 'This is Nothing', type: 'podcasts', text: 'Description text here.', imageLink: 'nothingSplash' },
+    { id: nanoid(), link: '', title: 'Fate & Forage', type: 'books', text: 'A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A bardic book of poetry, depicting baddies, merchants, and more; all found in dark dungeons, deep caves, and bustling towns.', imageLink: 'doaSplash' },
+    { id: nanoid(), link: '/raconteur-game', title: 'Raconteur', type: 'books', text: 'An 8.5x11 TTRPG system to facilitate simplistic gameplay with a five stat system.', imageLink: 'racontuer' },
+    { id: nanoid(), link: 'https://tapas.io/episode/793285', title: 'Misuse of Mana', type: 'comics', text: 'An ancient webcomic from long ago, discontinued for now, but boasts a world full of magic, friendship, and world threatening forces.', imageLink: 'mofmSplash' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/gXbKmf', title: 'Ire', type: 'comics', text: 'A short comic illustrating a poem about overcoming ones own inner conflict.', imageLink: 'ireSplash' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/wishmaker', title: 'Wishmaker', type: 'comics', text: 'A comic about old memories and sentimental value.', imageLink: 'wishmakerSplash' },
+    // { id: nanoid(), title: 'Psychic Psychic Cowboy', type: 'comics', text: 'Description text here.', imageLink: 'ppcSplash' },
+    { id: nanoid(), link: 'https://www.crickburrow.com/', title: 'Crickburrow Project', type: 'web-dev', text: 'Coded in Vue.js, this is an ongoing art/coding expirement meant to develop my front end skills.', imageLink: 'crickSplash' },
+    { id: nanoid(), link: 'https://moebiusdungeons.com/', title: 'Moebius Dungeons', type: 'web-dev', text: 'An RPG roguelike dungeon crawler game coded in Vue.js using Vuex to manage character data and Firebase as a back end.', imageLink: 'modunSplash' },
+    { id: nanoid(), link: 'https://rickcrickcrick.tumblr.com/', title: 'RickCrickCrick', type: 'photography', text: `A peek into another realm, where life is a film of epic proportions and perilous adventure. Are you paying attention?`, imageLink: 'rccSplash' },
+    { id: nanoid(), link: 'https://github.com/MisuseofMana', title: 'My Github', type: 'web-dev', text: 'My hobby GitHub, accessible to the public for forking, collaborating, and making connections.', imageLink: 'gitSplash' },
+    // { id: nanoid(), link: '', title: 'Character Generator', type: 'web-dev', text: 'Description text here.', imageLink: 'tbaSplash' },
+    { id: nanoid(), link: 'https://www.welcometoamara.com/', title: 'Welcome to Amara', type: 'podcasts', text: 'A fully produced podcast of a play by post Dungeon World campaign showcasing a fantasy realm with carefully crafted lore to uncover.', imageLink: 'wtaSplash' },
+    { id: nanoid(), link: 'https://soundcloud.com/shibbone', title: 'This is Nothing', type: 'podcasts', text: `Don't worry about this. It's nothing. It's nonsense. It's uncategorizable.`, imageLink: 'nothingSplash' },
+    { id: nanoid(), link: 'https://www.thestrategies.net/', title: 'The Strategies', type: 'web-dev', text: 'An informational website for an Indiana rehab client.', imageLink: 'strategiesSplash' },
   ])
+  const filteredProjects = computed(() => {
+    if (selectedSubTab.value === 'all') {
+      return projects.value
+    } 
+    return projects.value.filter((item) => {
+      return item.type === selectedSubTab.value
+    })
+  })
 </script>
