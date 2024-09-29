@@ -1,10 +1,11 @@
 <template>
   <v-card class="pa-10">
-    <h1 class="text-h1 mb-3">Sean Yager</h1>
+    <h1 class="text-h1 mb-5">Sean Yager</h1>
     <p class="text-h4 mb-5">Web Developer, Storyteller, Creator, Friendly Dude</p>
     <v-tabs
       v-model="tab"
       bg-color="white"
+      color="black"
       class="mb-5"
     >
       <v-tab value="home">Projects</v-tab>
@@ -18,12 +19,11 @@
             Nice to meet you! I'm Sean Yager, a web developer, a comics illustrator, a 3D artist, a poet, a storyteller, but mostly I'm a well versed, certified technology nerd.
           </p>
 
-          <p class="text-body-1 mb-3">I'm Sean Yager, a.k.a Shinbone, a.k.a Misuse of Mana, By day I code, create, and maintain a smattering of websites. By night I summon up narratives writing about the realm of Amara, my storytelling setting for comics, TTRPG source material, games and more.</p>
-          <p class="text-body-1 mb-3">I grew up in the cornfields of Indiana swinging tree branch swords and imagining backyard adventures which evolved into an ever growing interest of all things internet and storytelling. I currently work as a web developer for continued.com working on their Vue site.</p>
+          <p class="text-body-1 mb-3">I'm Sean Yager, a.k.a Shinbone, a.k.a Misuse of Mana, By day I code, create, and maintain a smattering of websites. By night I summon up narratives writing about the realm of Amara, my storytelling setting for comics, TTRPG source material, games and more. I grew up in the cornfields of Indiana swinging tree branch swords and imagining backyard adventures which evolved into an ever growing interest of all things internet and storytelling. I currently work as a web developer for continued.com working on their Vue site.</p>
           <p class="text-body-1">If you're interested in finding out more about my projects, I'm all over the place on social media just look me up!</p>
           
           <p class="text-body-1 mb-5">
-            Stay a while and browse my myriad projects, or tap the navbar for more!
+            Stay a while and browse my work, or make a selection in the navbar to filer by type!
           </p>
           <h2 class="text-h2 my-10">Projects</h2>
           <v-btn-toggle
@@ -41,7 +41,7 @@
 
           <v-row>
             <v-col cols="12" md="4" v-for="project in filteredProjects" :key="project.id">
-              <v-card color="grey-lighten-5" elevation="5" :href="project.link">
+              <v-card color="grey-lighten-5" elevation="5" :href="project.link" :target="isExternal(project.link) ? '_blank' : ''">
                 <v-img
                   color="surface-variant"
                   height="350"
@@ -181,7 +181,7 @@
               <h5 class="text-h4">Excellence Award</h5>
               <p class="text-h6">July 2024</p>
               <ul class="px-5 py-1 text-body-1">
-                <li>recieved an excellence award in Q3 within Continu<strong>ed</strong></li>
+                <li>recieved an excellence award in Q3 of 2024 within Continu<strong>ed</strong></li>
               </ul>
               <p class="text-body-1 ml-1 pl-2 border-s-xl">"Sean has gone above and beyond by pairing how he goes about his work with successfully leading, mentoring, and driving results on a number of important initiatives.
                   He led research efforts and pioneered the implementation of tools (Vuetify Component Aliasing & VeeValidate Customization) that improved ease of maintenence for Athena Front End components,
@@ -202,21 +202,22 @@
   const text = ref('all')
   const contentTypes = ref([  
     { text: 'All', value: 'all' },
-    { text: 'Web Dev', value: 'web-dev' },
-    { text: 'Comics', value: 'comics' },
     { text: 'Books', value: 'books' },
+    { text: 'Comics', value: 'comics' },
     { text: 'Photography', value: 'photography' },
     { text: 'Podcasts', value: 'podcasts' },
+    { text: 'Web Dev', value: 'web-dev' },
   ])
   const projects = ref([
-    { id: nanoid(), link: '', title: 'Fate & Forage', type: 'books', text: 'A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
-    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A bardic book of poetry, depicting baddies, merchants, and more; all found in dark dungeons, deep caves, and bustling towns.', imageLink: 'doaSplash' },
+    { id: nanoid(), link: '/fate-and-forage', title: 'Fate & Forage', type: 'books', text: 'A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
     { id: nanoid(), link: '/raconteur-game', title: 'Raconteur', type: 'books', text: 'An 8.5x11 TTRPG system to facilitate simplistic gameplay with a five stat system.', imageLink: 'racontuer' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A bardic book of poetry, depicting baddies, merchants, and more; all found in dark dungeons, deep caves, and bustling towns.', imageLink: 'doaSplash' },
+    { id: nanoid(), link: 'https://www.crickburrow.com/', title: 'Crickburrow Project', type: 'web-dev', text: 'Coded in Vue.js, this is an ongoing art/coding expirement meant to develop my front end skills.', imageLink: 'crickSplash' },
     { id: nanoid(), link: 'https://tapas.io/episode/793285', title: 'Misuse of Mana', type: 'comics', text: 'An ancient webcomic from long ago, discontinued for now, but boasts a world full of magic, friendship, and world threatening forces.', imageLink: 'mofmSplash' },
     { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/gXbKmf', title: 'Ire', type: 'comics', text: 'A short comic illustrating a poem about overcoming ones own inner conflict.', imageLink: 'ireSplash' },
     { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/wishmaker', title: 'Wishmaker', type: 'comics', text: 'A comic about old memories and sentimental value.', imageLink: 'wishmakerSplash' },
+    { id: nanoid(), link: 'https://kingloyal.seanyager.com', title: 'Character Creator', type: 'web-dev', text: 'A character creator made with HTML canvas and Vuetify.js.', imageLink: 'charactercreator' },
     // { id: nanoid(), title: 'Psychic Psychic Cowboy', type: 'comics', text: 'Description text here.', imageLink: 'ppcSplash' },
-    { id: nanoid(), link: 'https://www.crickburrow.com/', title: 'Crickburrow Project', type: 'web-dev', text: 'Coded in Vue.js, this is an ongoing art/coding expirement meant to develop my front end skills.', imageLink: 'crickSplash' },
     { id: nanoid(), link: 'https://moebiusdungeons.com/', title: 'Moebius Dungeons', type: 'web-dev', text: 'An RPG roguelike dungeon crawler game coded in Vue.js using Vuex to manage character data and Firebase as a back end.', imageLink: 'modunSplash' },
     { id: nanoid(), link: 'https://rickcrickcrick.tumblr.com/', title: 'RickCrickCrick', type: 'photography', text: `A peek into another realm, where life is a film of epic proportions and perilous adventure. Are you paying attention?`, imageLink: 'rccSplash' },
     { id: nanoid(), link: 'https://github.com/MisuseofMana', title: 'My Github', type: 'web-dev', text: 'My hobby GitHub, accessible to the public for forking, collaborating, and making connections.', imageLink: 'gitSplash' },
@@ -233,4 +234,7 @@
       return item.type === selectedSubTab.value
     })
   })
+  const isExternal = (link) => {
+    return link.includes('https')
+  }
 </script>
