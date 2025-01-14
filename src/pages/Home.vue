@@ -211,7 +211,7 @@
     { text: 'Web Dev', value: 'web-dev' },
   ])
   const projects = ref([
-    { id: nanoid(), link: '/fate-and-forage', title: 'Fate & Forage', type: 'books', text: 'Coming Soon : A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
+    { id: nanoid(), link: 'fate-and-forage', title: 'Fate & Forage', type: 'books', text: 'Coming Soon : A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
     { id: nanoid(), link: 'https://shinbone.itch.io/racontuer', title: 'Raconteur', type: 'books', text: 'An 8.5x11 TTRPG system to facilitate simplistic gameplay with a five stat system.', imageLink: 'racontuer' },
     { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A bardic book of poetry, depicting baddies, merchants, and more; all found in dark dungeons, deep caves, and bustling towns.', imageLink: 'doaSplash' },
     { id: nanoid(), link: 'https://www.crickburrow.com/', title: 'Crickburrow Project', type: 'web-dev', text: 'Coded in Vue.js, this is an ongoing art/coding expirement meant to develop my front end skills.', imageLink: 'crickSplash' },
