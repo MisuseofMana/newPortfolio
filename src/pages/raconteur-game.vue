@@ -6,7 +6,7 @@
     <v-card class="pa-10 mb-5">
         <v-row>
             <v-col cols="12" md="4">
-                <v-img src="/public/racontuer/foreward.jpg" class="mr-5"/>
+                <v-img src="/racontuer/foreward.jpg?url" class="mr-5"/>
             </v-col>
             <v-col cols="12" md="8">
                 <h3 class="text-h4 mb-5">About Raconteur</h3>
@@ -19,7 +19,6 @@
                 <v-btn size="x-large" color="grey" class="mb-5" href="/">
                     Back Home
                 </v-btn>
-
             </v-col>
         </v-row>
     </v-card>
