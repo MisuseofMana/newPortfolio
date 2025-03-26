@@ -40,13 +40,13 @@
         </v-btn-toggle>
 
           <v-row>
-            <v-col cols="12" md="4" v-for="project in filteredProjects" :key="project.id">
-              <v-card color="grey-lighten-5" elevation="5" :href="project.link" :target="isExternal(project.link) ? '_blank' : ''">
+            <v-col cols="12" md="6" lg="4" v-for="project in filteredProjects" :key="project.id">
+              <v-card color="grey-lighten-5" elevation="5">
                 <v-img
-                  color="surface-variant"
-                  height="350"
-                  :src="`/projectImages/${project.imageLink}.jpg`"
-                  cover
+                color="surface-variant"
+                height="350"
+                :src="`/projectImages/${project.imageLink}.jpg`"
+                cover
                 />
                 <v-card-title>
                   <h3 class="mt-2 text-h5">{{ project.title }}</h3>
@@ -58,6 +58,12 @@
                 <v-card-text>
                   <p class="text-body-1">{{ project.text }}</p>
                 </v-card-text>
+                <v-card-actions class="d-flex justify-end">
+                  <v-btn v-if="isExternal(project.link)" class="ma-5 px-5" color="primary" size="x-large" variant="tonal" rounded :href="project.link" target="_blank">Go To Content</v-btn>
+                  <RouterLink v-else :to="project.link">
+                    <v-btn class="ma-5 px-5" color="primary" rounded size="x-large" variant="tonal">Learn More</v-btn>
+                  </RouterLink>
+                </v-card-actions>
               </v-card>
             </v-col>
           </v-row>
@@ -69,7 +75,6 @@
             <p class="text-body-1 mb-3">I spent most of 20-Naught rounding my production skills across Full Stack Web Dev, UI/UX Design, Vue JS, Vuex, Illustration, Graphic Design, SEO, and Storytelling in order to produce quality content.</p>
             <p class="text-body-1 mb-10">Working with a team is my forte, I'm knowledgeable in mutiple fields and I use that knowledge to communicate to my clients/coworkers how we can facilitate a seamless experience for each other.</p>
             
-            <p class="text-h4 mb-5">Web Developer, Comics Artist, Cryptographer, Storyteller</p>
             <v-divider class="mb-5"/>
             <h4 class="text-h4 mb-3">Work History</h4>
             <v-card
@@ -77,14 +82,14 @@
               color="secondary-lighten-1"
             >
               <h5 class="text-h4">Continu<strong>ed</strong></h5>
-              <p class="text-h5">Int. Front End Web Developer</p>
+              <p class="text-h5">Senior Front End Web Developer</p>
               <p class="text-h6">December 2021 - Present</p>
               <ul class="px-5 py-1 text-body-1">
                 <li>work on evolving Agile teams under a Scrum manager to deliver tri-weekly features</li>
                 <li>recreate legacy CMS to a modernized customizable Vue 3, Nuxt 3, & Vuetify 3 CMS</li>
                 <li>integrate third party services - Kaltura, Stamped.io, VWO, GTM, and more</li>
                 <li>build and maintain a customized library of Vuetify components leveraging aliasing and global configuration</li>
-                <li>maintain internal documentation using Vuepress</li>
+                <li>maintain internal documentation using Vitepress</li>
               </ul>
             </v-card>
 
@@ -189,8 +194,6 @@
                   development team. He focuses on mentoring and sharing knowledge. He handled our first late night/early morning Athena on-call incident like a pro!"</p>
             </v-card>
           </v-tabs-window-item>
-
-
       </v-tabs-window>
     </v-card-text>
   </v-card>
@@ -211,22 +214,21 @@
     { text: 'Web Dev', value: 'web-dev' },
   ])
   const projects = ref([
-    { id: nanoid(), link: 'fate-and-forage', title: 'Fate & Forage', type: 'books', text: 'Coming Soon : A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
+    // { id: nanoid(), link: 'fate-and-forage', title: 'Fate & Forage', type: 'books', text: 'Coming Soon : A system agnostic TTRPG resource book that details a world of gargantuan forests and low magics.', imageLink: 'fateAndForage' },
     { id: nanoid(), link: 'https://shinbone.itch.io/racontuer', title: 'Raconteur', type: 'books', text: 'An 8.5x11 TTRPG system to facilitate simplistic gameplay with a five stat system.', imageLink: 'racontuer' },
-    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A bardic book of poetry, depicting baddies, merchants, and more; all found in dark dungeons, deep caves, and bustling towns.', imageLink: 'doaSplash' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/CsdPh', title: 'Dungeons of Amara', type: 'books', text: 'A TTRPG resource book depicting monsters, merchants, and more in a poetic format.', imageLink: 'doaSplash' },
     { id: nanoid(), link: 'https://www.crickburrow.com/', title: 'Crickburrow Project', type: 'web-dev', text: 'Coded in Vue.js, this is an ongoing art/coding expirement meant to develop my front end skills.', imageLink: 'crickSplash' },
-    { id: nanoid(), link: 'https://tapas.io/episode/793285', title: 'Misuse of Mana', type: 'comics', text: 'An ancient webcomic from long ago, discontinued for now, but boasts a world full of magic, friendship, and world threatening forces.', imageLink: 'mofmSplash' },
-    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/gXbKmf', title: 'Ire', type: 'comics', text: 'A short comic illustrating a poem about overcoming ones own inner conflict.', imageLink: 'ireSplash' },
-    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/wishmaker', title: 'Wishmaker', type: 'comics', text: 'A comic about old memories and sentimental value.', imageLink: 'wishmakerSplash' },
-    { id: nanoid(), link: 'https://kingloyal.seanyager.com', title: 'Character Creator', type: 'web-dev', text: 'A character creator made with HTML canvas and Vuetify.js.', imageLink: 'charactercreator' },
+    { id: nanoid(), link: 'https://tapas.io/episode/793285', title: 'Misuse of Mana', type: 'comics', text: 'A discontinued webcomic boasts a world full of magic, friendship, and world threatening forces.', imageLink: 'mofmSplash' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/gXbKmf', title: 'Ire', type: 'comics', text: 'A short comic illustrating a poem about overcoming your internal obstacles through finding friendship.', imageLink: 'ireSplash' },
+    { id: nanoid(), link: 'https://misuseofmana.gumroad.com/l/wishmaker', title: 'Wishmaker', type: 'comics', text: 'A comic about old memories and sentimental value, one of my oldest comics.', imageLink: 'wishmakerSplash' },
+    { id: nanoid(), link: 'https://kingloyal.seanyager.com', title: 'Character Creator', type: 'web-dev', text: 'A character creator for portraits made with HTML canvas and Vuetify.js. Exports images and allows saving.', imageLink: 'charactercreator' },
     // { id: nanoid(), title: 'Psychic Psychic Cowboy', type: 'comics', text: 'Description text here.', imageLink: 'ppcSplash' },
-    { id: nanoid(), link: 'https://moebiusdungeons.com/', title: 'Moebius Dungeons', type: 'web-dev', text: 'An RPG roguelike dungeon crawler game coded in Vue.js using Vuex to manage character data and Firebase as a back end.', imageLink: 'modunSplash' },
+    { id: nanoid(), link: 'https://moebiusdungeons.com/', title: 'Moebius Dungeons', type: 'web-dev', text: 'An RPG roguelike dungeon crawler game coded in Vue.js using Vuex to manage character data.', imageLink: 'modunSplash' },
     { id: nanoid(), link: 'https://rickcrickcrick.tumblr.com/', title: 'RickCrickCrick', type: 'photography', text: `A peek into another realm, where life is a film of epic proportions and perilous adventure. Are you paying attention?`, imageLink: 'rccSplash' },
     { id: nanoid(), link: 'https://github.com/MisuseofMana', title: 'My Github', type: 'web-dev', text: 'My hobby GitHub, accessible to the public for forking, collaborating, and making connections.', imageLink: 'gitSplash' },
     // { id: nanoid(), link: '', title: 'Character Generator', type: 'web-dev', text: 'Description text here.', imageLink: 'tbaSplash' },
-    { id: nanoid(), link: 'https://www.welcometoamara.com/', title: 'Welcome to Amara', type: 'podcasts', text: 'A fully produced podcast of a play by post Dungeon World campaign showcasing a fantasy realm with carefully crafted lore to uncover.', imageLink: 'wtaSplash' },
-    { id: nanoid(), link: 'https://soundcloud.com/shibbone', title: 'This is Nothing', type: 'podcasts', text: `Don't worry about this. It's nothing. It's nonsense. It's uncategorizable.`, imageLink: 'nothingSplash' },
-    { id: nanoid(), link: 'https://www.thestrategies.net/', title: 'The Strategies', type: 'web-dev', text: 'An informational website for an Indiana rehab client.', imageLink: 'strategiesSplash' },
+    // { id: nanoid(), link: 'https://www.welcometoamara.com/', title: 'Welcome to Amara', type: 'podcasts', text: 'A fully produced podcast of a play by post Dungeon World campaign showcasing a fantasy realm with carefully crafted lore to uncover.', imageLink: 'wtaSplash' },
+    { id: nanoid(), link: 'https://soundcloud.com/shibbone', title: 'This is Nothing', type: 'podcasts', text: `Don't worry about this. It's musings and tomfoolery. It's nothing. It's nonsense. It's uncategorizable. `, imageLink: 'nothingSplash' },
   ])
   const filteredProjects = computed(() => {
     if (selectedSubTab.value === 'all') {

@@ -23,7 +23,7 @@ const portfolioTheme = {
     'on-surface-variant': '#EEEEEE',
     primary: '#D129C0',
     'primary-darken-1': '#9E128F',
-    'secondary-lighten-1': '#DDDDDD',
+    'secondary-lighten-1': '#e3d5e2',
     secondary: '#928390',
     'secondary-darken-1': '#625761',
     error: '#B00020',

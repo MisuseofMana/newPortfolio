@@ -1,15 +1,15 @@
 <template>
   <v-app>
     <v-main class="background-container">
-      <v-container>
-        <router-view />
+      <v-container max-width="1200px">
+        <RouterView/>
       </v-container>
     </v-main>
     <v-container>
       <v-footer>
         <v-row>
           <v-col cols="12" align="right">
-            <a href="https://www.instagram.com/misuseofmana/" target="_blank">
+            <a class="text-primary" href="https://www.instagram.com/misuseofmana/" target="_blank">
               @misuseofmana
             </a>
             <p class="text-body-1">
